@@ -693,7 +693,12 @@ read_system_page (Bit_Chain *dat, int64_t size_comp, int64_t size_uncomp,
     }
 
   if (size_comp < size_uncomp)
-    error = decompress_r2007 (data, size_uncomp + 1, pedata, MIN (pedata_size, size_comp));
+    {
+      dat->chain = pedata;
+      dat->size = page_size;
+      error = decompress_R2004_section (dat, data, size_comp);
+      // decompress_r2007 (data, size_uncomp + 1, pedata, MIN (pedata_size, size_comp));
+    }
   else
     memcpy (data, pedata, size_uncomp);
 
