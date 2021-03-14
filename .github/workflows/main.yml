@@ -21,6 +21,7 @@ jobs:
           - --disable-bindings CFLAGS="-O0 -fno-omit-frame-pointer -fsanitize=address,undefined -fno-var-tracking"
           - --enable-release
           - CC="clang"
+          - --enable-gcov
     steps:
     - uses: actions/checkout@v2
       with:
@@ -38,10 +39,22 @@ jobs:
     - run: sh autogen.sh
     - run: ./configure ${{ matrix.CONFIGURE_ARGS }}
     - run: make
-    - run: make check
+    - if: ${{ matrix.CONFIGURE_ARGS != '--enable-gcov' }}
+      run: make check
+    #- if: matrix.CONFIGURE_ARGS == '--enable-gcov'
+    #  name: coveralls.io
+    #  run: |
+    #    make gcov
+    #    coveralls --gcov-options '\-lp' -e bindings - e test/test-data
+    - if: ${{ matrix.CONFIGURE_ARGS == '--enable-gcov' }}
+      name: Run gcov and codecov.io
+      run: |
+        make gcov
+        export CODECOV_TOKEN='136568c9-e6c8-4fc1-b038-969083427139'
+        bash <(curl -s https://codecov.io/bash)
     # FIXME
-    #- if: ${{ matrix.CONFIGURE_ARGS }} == '--enable-release'
-    #  run: make distcheck
+    - if: ${{ matrix.CONFIGURE_ARGS == '--enable-release' }}
+      run: make distcheck
   linux-cmake:
     runs-on: ubuntu-latest
     timeout-minutes: 20
