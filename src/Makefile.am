@@ -20,7 +20,7 @@
 lib_LTLIBRARIES = libredwg.la
 WARN_CFLAGS = @WARN_CFLAGS@
 AM_CFLAGS   = -I$(top_srcdir)/include -I. $(WARN_CFLAGS)
-libredwg_la_LDFLAGS = -version-info $(LIBREDWG_SO_VERSION) -no-undefined -lm
+libredwg_la_LDFLAGS = -version-info $(LIBREDWG_SO_VERSION) -no-undefined -lm -lgc
 
 libredwg_la_SOURCES = \
 	dwg.c \
@@ -30,7 +30,6 @@ libredwg_la_SOURCES = \
         decode_r2007.c \
 	reedsolomon.c \
         print.c \
-        free.c \
         hash.c \
 	dynapi.c \
 	classes.c \
@@ -38,6 +37,10 @@ libredwg_la_SOURCES = \
 	objects.c \
         out_dxf.c \
 	$(EXTRA_HEADERS)
+if !HAVE_LIBGC
+libredwg_la_SOURCES += \
+	free.c
+endif
 if !DISABLE_DXF
 libredwg_la_SOURCES += \
         out_dxfb.c

@@ -141,6 +141,7 @@ main (int argc, char *argv[])
           { NULL, 0, NULL, 0 } };
 #endif
 
+  GC_INIT();
   if (argc <= 1 || !*argv[1])
     return usage();
   memset (&opt, 0, sizeof (struct opt_s));
@@ -346,7 +347,7 @@ static dwg_point_2d *scan_pts2d (unsigned num_pts, char **pp)
   p++;
   if (num_pts > 5000)
     exit (0);
-  pts = calloc (num_pts, 16);
+  pts = CALLOC (num_pts, 16);
   if (!pts)
     exit (0);
   for (unsigned i=0; i < num_pts; i++)
@@ -373,7 +374,7 @@ static dwg_point_2d *scan_pts2d (unsigned num_pts, char **pp)
     }
   else
     {
-      free (pts);
+      FREE (pts);
       return NULL;
     }
 }
@@ -389,7 +390,7 @@ static dwg_point_3d *scan_pts3d (unsigned num_pts, char **pp)
   p++;
   if (num_pts > 5000)
     exit (0);
-  pts = calloc (num_pts, 24);
+  pts = CALLOC (num_pts, 24);
   if (!pts)
     exit (0);
   for (unsigned i=0; i < num_pts; i++)
@@ -416,7 +417,7 @@ static dwg_point_3d *scan_pts3d (unsigned num_pts, char **pp)
     }
   else
     {
-      free (pts);
+      FREE (pts);
       return NULL;
     }
 }
@@ -804,7 +805,7 @@ static int dwg_add_dat (Dwg_Data **dwgp, Bit_Chain *dat)
             {
               ent = (lastent_t){.u.polyline_2d = dwg_add_POLYLINE_2D (hdr, i1, pts),
                                 .type = DWG_TYPE_POLYLINE_2D};
-              free (pts);
+              FREE (pts);
             }
         }
       else SET_ENT (polyline_2d, POLYLINE_2D)
@@ -815,7 +816,7 @@ static int dwg_add_dat (Dwg_Data **dwgp, Bit_Chain *dat)
             {
               ent = (lastent_t){.u.polyline_3d = dwg_add_POLYLINE_3D (hdr, i1, pts),
                                 .type = DWG_TYPE_POLYLINE_3D};
-              free (pts);
+              FREE (pts);
             }
         }
       else SET_ENT (polyline_3d, POLYLINE_3D)
@@ -826,7 +827,7 @@ static int dwg_add_dat (Dwg_Data **dwgp, Bit_Chain *dat)
             {
               ent = (lastent_t){.u.polyline_mesh = dwg_add_POLYLINE_MESH (hdr, i1, i2, pts),
                                 .type = DWG_TYPE_POLYLINE_MESH};
-              free (pts);
+              FREE (pts);
             }
         }
       else SET_ENT (polyline_mesh, POLYLINE_MESH)
@@ -862,7 +863,7 @@ static int dwg_add_dat (Dwg_Data **dwgp, Bit_Chain *dat)
               ent = (lastent_t){.u.spline = dwg_add_SPLINE (hdr, i1, fitpts, &pt2, &pt3),
                                 .type = DWG_TYPE_SPLINE};
             }
-          free (fitpts);
+          FREE (fitpts);
         }
       else SET_ENT (spline, SPLINE)
       else if (ent.type == DWG_TYPE_MTEXT
@@ -874,7 +875,7 @@ static int dwg_add_dat (Dwg_Data **dwgp, Bit_Chain *dat)
               ent = (lastent_t){.u.leader = dwg_add_LEADER (hdr, i1, pts, ent.u.mtext, i2),
                                 .type = DWG_TYPE_LEADER};
             }
-          free (pts);
+          FREE (pts);
         }
       else SET_ENT (leader, LEADER)
       else if (SSCANF_S (p, "tolerance " FMT_TBL " (%lf %lf %lf) (%lf %lf %lf)",
