@@ -9,7 +9,7 @@
 
 #include "EXTERN.h"
 #include "perl.h"
-#include "ppport.h"
+/* #include "ppport.h" */
 
 #ifdef __MINGW32__
 #include <stdint.h>

@@ -1,5 +1,8 @@
-LibreDWG.c
-LibreDWG.pm
-MANIFEST
 Makefile.PL
-t/0_basic.t
+MANIFEST
+perl_math_int64.h
+perl_math_int64.c
+t/LibreDWG.t
+lib/LibreDWG.pm
+lib/LibreDWG/API.xs
+lib/LibreDWG/API.pm

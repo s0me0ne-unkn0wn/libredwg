@@ -1,8 +1,0 @@
-Makefile.PL
-MANIFEST
-perl_math_int64.h
-perl_math_int64.c
-t/LibreDWG-API.t
-lib/LibreDWG.pm
-lib/LibreDWG/API.xs
-lib/LibreDWG/API.pm
