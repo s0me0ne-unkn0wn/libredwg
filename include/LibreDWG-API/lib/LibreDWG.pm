@@ -25,7 +25,6 @@ sub new {
 		if($opt{format} eq 'dwg') {
 			$dwg = LibreDWG::API::_dwg_new();
 			my $err = LibreDWG::API::dwg_read_file($opt{filename}, $dwg);
-			p $dwg;
 			croak "Reading $opt{filename}: error $err" if $err >= LibreDWG::API::DWG_ERR_CRITICAL;
 		} elsif($opt{format} eq 'dxf') {
 			die 'Reading DXF is not implemented yet';
@@ -37,7 +36,6 @@ sub new {
 	}
 
 	my $mspace_hdr = LibreDWG::API::_dwg_get_mspace_BLOCK_HEADER($dwg);
-	p $mspace_hdr;
 	my $self = bless {
 		%opt,
 		dwg => $dwg,
@@ -45,6 +43,16 @@ sub new {
 		mspace_hdr => $mspace_hdr,
 		pspace_hdr => LibreDWG::API::_dwg_get_pspace_BLOCK_HEADER($dwg),
 	}, $class;
+}
+
+sub mspace {
+	my $self = shift;
+	$self->{hdr} = $self->{mspace_hdr};
+}
+
+sub pspace {
+	my $self = shift;
+	$self->{hdr} = $self->{pspace_hdr};
 }
 
 sub write_file {
