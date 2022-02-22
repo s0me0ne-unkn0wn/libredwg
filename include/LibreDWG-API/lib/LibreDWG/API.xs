@@ -81,12 +81,13 @@ dwg_write_file(filename, dwg)
 	char *filename
 	Dwg_Data *dwg
 
-# The following declarations was generated from pre-processed dwg_api.h with multiline comments removed:
+# The following declarations were first generated from pre-processed dwg_api.h with multiline comments removed:
 # cat tmp1.h \
 # |perl -pE 's/(?<!;)\n//' \
 # |perl -pE 's|/\*.*?\*/||g; s/\bconst\b//g; s/__nonnull_all//g; s/__nonnull\s*\(\([\d\s,]*\)\)//g; s/\*\s*restrict/*/g; s/[\t ]+/ /g; s/^EXPORT\s+//' \
 # |perl -nE 's/^([^\*]+\*)//; my $rettype=$1; s/(\(.*\))//; my $args = $1; my $func = $_; $func=~s/\s*;\s*$//; $args=~s/^\(\s*//; $args=~s/\s*\)\s*$//; @args=split /\s*,\s*/, $args; @names = map { /(\w+)$/; $1 } @args; $rettype=~s/(?<=\S)\*/ */; say "\n$rettype"; say "$func(" . join(", ", @names) . ")"; say $_ for map { s/\*\s+/*/; s/(?<=\S)\*/ */; "\t\t$_" } @args;'
 
+# tested
 Dwg_Entity_TEXT *
 dwg_add_TEXT(blkhdr, text_value, ins_pt, height)
 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -137,6 +138,7 @@ dwg_add_MINSERT(blkhdr, ins_pt, name, xscale, yscale, zscale, rotation, num_rows
 		double row_spacing
 		double col_spacing
 
+# tested
 Dwg_Entity_POLYLINE_2D *
 dwg_add_POLYLINE_2D(blkhdr, num_pts, pts)
 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -149,6 +151,7 @@ dwg_add_POLYLINE_3D(blkhdr, num_pts, pts)
 		int num_pts
 		dwg_point_3d_vec pts
 
+# TODO: Needs interface to verts and faces array
 # Dwg_Entity_POLYLINE_PFACE *
 # dwg_add_POLYLINE_PFACE(blkhdr, numverts, numfaces, verts, faces)
 # 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -165,6 +168,7 @@ dwg_add_POLYLINE_MESH(blkhdr, num_m_verts, num_n_verts, verts)
 		unsigned num_n_verts
 		dwg_point_3d_vec verts
 
+# tested
 Dwg_Entity_ARC *
 dwg_add_ARC(blkhdr, center, radius, start_angle, end_angle)
 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -173,18 +177,21 @@ dwg_add_ARC(blkhdr, center, radius, start_angle, end_angle)
 		double start_angle
 		double end_angle
 
+# tested
 Dwg_Entity_CIRCLE *
 dwg_add_CIRCLE(blkhdr, center, radius)
 		Dwg_Object_BLOCK_HEADER *blkhdr
 		dwg_point_3d *center
 		double radius
 
+# tested
 Dwg_Entity_LINE *
 dwg_add_LINE(blkhdr, start_pt, end_pt)
 		Dwg_Object_BLOCK_HEADER *blkhdr
 		dwg_point_3d *start_pt
 		dwg_point_3d *end_pt
 
+# tested
 Dwg_Entity_DIMENSION_ALIGNED *
 dwg_add_DIMENSION_ALIGNED(blkhdr, xline1_pt, xline2_pt, text_pt)
 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -192,6 +199,7 @@ dwg_add_DIMENSION_ALIGNED(blkhdr, xline1_pt, xline2_pt, text_pt)
 		dwg_point_3d *xline2_pt
 		dwg_point_3d *text_pt
 
+# not sure how it works
 Dwg_Entity_DIMENSION_ANG2LN *
 dwg_add_DIMENSION_ANG2LN(blkhdr, center_pt, xline1end_pt, xline2end_pt, text_pt)
 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -200,6 +208,7 @@ dwg_add_DIMENSION_ANG2LN(blkhdr, center_pt, xline1end_pt, xline2end_pt, text_pt)
 		dwg_point_3d *xline2end_pt
 		dwg_point_3d *text_pt
 
+# tested
 Dwg_Entity_DIMENSION_ANG3PT *
 dwg_add_DIMENSION_ANG3PT(blkhdr, center_pt, xline1_pt, xline2_pt, text_pt)
 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -208,6 +217,7 @@ dwg_add_DIMENSION_ANG3PT(blkhdr, center_pt, xline1_pt, xline2_pt, text_pt)
 		dwg_point_3d *xline2_pt
 		dwg_point_3d *text_pt
 
+# tested
 Dwg_Entity_DIMENSION_DIAMETER *
 dwg_add_DIMENSION_DIAMETER(blkhdr, chord_pt, far_chord_pt, leader_len)
 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -215,6 +225,7 @@ dwg_add_DIMENSION_DIAMETER(blkhdr, chord_pt, far_chord_pt, leader_len)
 		dwg_point_3d *far_chord_pt
 		double leader_len
 
+# tested
 Dwg_Entity_DIMENSION_ORDINATE *
 dwg_add_DIMENSION_ORDINATE(blkhdr, def_pt, leader_endpt, use_x_axis)
 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -222,6 +233,7 @@ dwg_add_DIMENSION_ORDINATE(blkhdr, def_pt, leader_endpt, use_x_axis)
 		dwg_point_3d *leader_endpt
 		bool use_x_axis
 
+# tested
 Dwg_Entity_DIMENSION_RADIUS *
 dwg_add_DIMENSION_RADIUS(blkhdr, center_pt, chord_pt, leader_len)
 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -381,6 +393,7 @@ dwg_add_LWPOLYLINE(blkhdr, num_pts2d, pts2d)
 		int num_pts2d
 		dwg_point_2d *pts2d
 
+# TODO: Needs interface to *pathobjs
 # Dwg_Entity_HATCH *
 # dwg_add_HATCH(blkhdr, pattern_type, name, is_associative, num_paths, pathobjs)
 # 		Dwg_Object_BLOCK_HEADER *blkhdr
@@ -511,17 +524,18 @@ dwg_add_ACSH_BOX_CLASS(evalgraph, origin_pt, normal, length, width, height)
 		double width
 		double height
 
-Dwg_Object_ACSH_CHAMFER_CLASS *
-dwg_add_ACSH_CHAMFER_CLASS(evalgraph, origin_pt, normal, bl92, base_dist, other_dist, num_edges, edges, bl95)
-		Dwg_Object_EVALUATION_GRAPH *evalgraph
-		dwg_point_3d *origin_pt
-		dwg_point_3d *normal
-		int bl92
-		double base_dist
-		double other_dist
-		int num_edges
-		int32_t *edges
-		int bl95
+# TODO: Needs interface to edge array
+# Dwg_Object_ACSH_CHAMFER_CLASS *
+# dwg_add_ACSH_CHAMFER_CLASS(evalgraph, origin_pt, normal, bl92, base_dist, other_dist, num_edges, edges, bl95)
+# 		Dwg_Object_EVALUATION_GRAPH *evalgraph
+# 		dwg_point_3d *origin_pt
+# 		dwg_point_3d *normal
+# 		int bl92
+# 		double base_dist
+# 		double other_dist
+# 		int num_edges
+# 		int32_t *edges
+# 		int bl95
 
 Dwg_Object_ACSH_CONE_CLASS *
 dwg_add_ACSH_CONE_CLASS(evalgraph, origin_pt, normal, height, major_radius, minor_radius, x_radius)
@@ -577,13 +591,14 @@ dwg_add_ACSH_WEDGE_CLASS(evalgraph, origin_pt, normal, length, width, height)
 		double width
 		double height
 
-Dwg_Object_EVALUATION_GRAPH *
-dwg_add_EVALUATION_GRAPH(dwg, has_graph, nodeid, num_evalexpr, evalexpr)
-		Dwg_Data *dwg
-		int has_graph
-		int nodeid
-		unsigned num_evalexpr
-		BITCODE_H *evalexpr
+# TODO: Needs interface to evalexpr array
+# Dwg_Object_EVALUATION_GRAPH *
+# dwg_add_EVALUATION_GRAPH(dwg, has_graph, nodeid, num_evalexpr, evalexpr)
+# 		Dwg_Data *dwg
+# 		int has_graph
+# 		int nodeid
+# 		unsigned num_evalexpr
+# 		BITCODE_H *evalexpr
 
 Dwg_Object_ACSH_HISTORY_CLASS *
 dwg_add_ACSH_HISTORY_CLASS(region, h_nodeid)
