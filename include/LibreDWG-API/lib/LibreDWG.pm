@@ -72,7 +72,11 @@ sub add_POLYLINE_3D {
 	LibreDWG::API::dwg_add_POLYLINE_3D($self->{hdr}, scalar(@$pts), $pts);
 }
 
-# TBD: SPLINE
+sub add_SPLINE {
+	my ($self, $fit_pts, $beg_tan, $end_tan) = @_;
+	LibreDWG::API::dwg_add_SPLINE($self->{hdr}, scalar(@$fit_pts), $fit_pts, $beg_tan, $end_tan);
+}
+
 # TBD: POLYLINE_PFACE
 # TBD: POLYLINE_MESH
 # TBD: LEADER
