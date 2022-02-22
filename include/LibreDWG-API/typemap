@@ -1,0 +1,177 @@
+TYPEMAP
+Dwg_Data *	T_PTR
+Dwg_Object *	T_PTR
+Dwg_Object_BLOCK_HEADER *	T_PTR
+Dwg_Version_Type	T_UV
+dwg_point_3d *	T_DWG_POINT_3D_PTR
+dwg_point_2d *	T_DWG_POINT_2D_PTR
+dwg_point_3d_vec	T_DWG_POINT_3D_VEC
+dwg_point_2d_vec	T_DWG_POINT_2D_VEC
+Dwg_Entity__3DFACE *	T_PTR
+Dwg_Entity_3DSOLID *	T_PTR
+Dwg_Entity_ARC *	T_PTR
+Dwg_Entity_ATTRIB *	T_PTR
+Dwg_Entity_BLOCK *	T_PTR
+Dwg_Entity_BODY *	T_PTR
+Dwg_Entity_CIRCLE *	T_PTR
+Dwg_Entity_DIMENSION_ALIGNED *	T_PTR
+Dwg_Entity_DIMENSION_ANG2LN *	T_PTR
+Dwg_Entity_DIMENSION_ANG3PT *	T_PTR
+Dwg_Entity_DIMENSION_DIAMETER *	T_PTR
+Dwg_Entity_DIMENSION_LINEAR *	T_PTR
+Dwg_Entity_DIMENSION_ORDINATE *	T_PTR
+Dwg_Entity_DIMENSION_RADIUS *	T_PTR
+Dwg_Entity_ELLIPSE *	T_PTR
+Dwg_Entity_ENDBLK *	T_PTR
+Dwg_Entity_HATCH *	T_PTR
+Dwg_Entity_IMAGE *	T_PTR
+Dwg_Entity_INSERT *	T_PTR
+Dwg_Entity_LARGE_RADIAL_DIMENSION *	T_PTR
+Dwg_Entity_LEADER *	T_PTR
+Dwg_Entity_LINE *	T_PTR
+Dwg_Entity_LWPOLYLINE *	T_PTR
+Dwg_Entity_MINSERT *	T_PTR
+Dwg_Entity_MLINE *	T_PTR
+Dwg_Entity_MTEXT *	T_PTR
+Dwg_Entity_OLE2FRAME *	T_PTR
+Dwg_Entity_PDFUNDERLAY *	T_PTR
+Dwg_Entity_POINT *	T_PTR
+Dwg_Entity_POLYLINE_2D *	T_PTR
+Dwg_Entity_POLYLINE_3D *	T_PTR
+Dwg_Entity_POLYLINE_MESH *	T_PTR
+Dwg_Entity_POLYLINE_PFACE *	T_PTR
+Dwg_Entity_PROXY_ENTITY *	T_PTR
+Dwg_Entity_RAY *	T_PTR
+Dwg_Entity_REGION *	T_PTR
+Dwg_Entity_SHAPE *	T_PTR
+Dwg_Entity_SOLID *	T_PTR
+Dwg_Entity_SPLINE *	T_PTR
+Dwg_Entity_TEXT *	T_PTR
+Dwg_Entity_TOLERANCE *	T_PTR
+Dwg_Entity_TRACE *	T_PTR
+Dwg_Entity_VIEWPORT *	T_PTR
+Dwg_Entity_XLINE *	T_PTR
+Dwg_Object_ACSH_BOX_CLASS *	T_PTR
+Dwg_Object_ACSH_CHAMFER_CLASS *	T_PTR
+Dwg_Object_ACSH_CONE_CLASS *	T_PTR
+Dwg_Object_ACSH_CYLINDER_CLASS *	T_PTR
+Dwg_Object_ACSH_HISTORY_CLASS *	T_PTR
+Dwg_Object_ACSH_PYRAMID_CLASS *	T_PTR
+Dwg_Object_ACSH_SPHERE_CLASS *	T_PTR
+Dwg_Object_ACSH_TORUS_CLASS *	T_PTR
+Dwg_Object_ACSH_WEDGE_CLASS *	T_PTR
+Dwg_Object_APPID *	T_PTR
+Dwg_Object_BLOCK_CONTROL *	T_PTR
+Dwg_Object_BLOCK_HEADER *	T_PTR
+Dwg_Object_DICTIONARY *	T_PTR
+Dwg_Object_DICTIONARYWDFLT *	T_PTR
+Dwg_Object_DIMSTYLE *	T_PTR
+Dwg_Object_EVALUATION_GRAPH *	T_PTR
+Dwg_Object_GROUP *	T_PTR
+Dwg_Object_LAYER *	T_PTR
+Dwg_Object_LAYERFILTER *	T_PTR
+Dwg_Object_LAYER_INDEX *	T_PTR
+Dwg_Object_LAYOUT *	T_PTR
+Dwg_Object_LTYPE *	T_PTR
+Dwg_Object_MLINESTYLE *	T_PTR
+Dwg_Object_PLACEHOLDER *	T_PTR
+Dwg_Object_PROXY_OBJECT *	T_PTR
+Dwg_Object_SPATIAL_FILTER *	T_PTR
+Dwg_Object_SPATIAL_INDEX *	T_PTR
+Dwg_Object_STYLE *	T_PTR
+Dwg_Object_UCS *	T_PTR
+Dwg_Object_VBA_PROJECT *	T_PTR
+Dwg_Object_VIEW *	T_PTR
+Dwg_Object_VPORT *	T_PTR
+Dwg_Object_VX_TABLE_RECORD *	T_PTR
+Dwg_Object_WIPEOUTVARIABLES *	T_PTR
+Dwg_Object_XRECORD *	T_PTR
+BITCODE_RC	T_U_CHAR
+BITCODE_RCd	T_CHAR
+BITCODE_RCu	T_U_CHAR
+BITCODE_RCx	T_U_CHAR
+BITCODE_B 	T_U_CHAR
+BITCODE_BB	T_U_CHAR
+BITCODE_3B	T_U_CHAR
+BITCODE_BS 	T_U_SHORT
+BITCODE_BSd	T_SHORT
+BITCODE_BSx	T_U_SHORT
+BITCODE_RS	T_U_SHORT
+BITCODE_RSx T_U_SHORT
+BITCODE_BL	T_U_LONG
+BITCODE_BLx	T_U_LONG
+BITCODE_BLd	T_LONG
+BITCODE_RL	T_U_LONG
+BITCODE_RLx	T_U_LONG
+BITCODE_RLd	T_LONG
+BITCODE_RLL	T_UINT64
+BITCODE_BLL	T_UINT64
+BITCODE_BD	T_DOUBLE
+BITCODE_RC *	T_PV
+Dwg_Handle T_OPAQUE
+int32_t *	T_PV
+BITCODE_H *	T_PTR
+
+INPUT
+T_UINT64
+	$var = SvU64($arg);
+
+T_DWG_POINT_3D_PTR
+	if(!$arg || !SvOK($arg) || !SvROK($arg) || SvTYPE(SvRV($arg)) != SVt_PVAV || AvFILL((AV*) SvRV($arg)) < 2)
+		croak(\"point_3d should be an array of 3 elements\");
+	Newx($var, 1, dwg_point_3d);
+	$var->x = SvNV(*(av_fetch((AV*) SvRV($arg), 0, 0)));
+	$var->y = SvNV(*(av_fetch((AV*) SvRV($arg), 1, 0)));
+	$var->z = SvNV(*(av_fetch((AV*) SvRV($arg), 2, 0)));
+	SAVEFREEPV($var);
+
+T_DWG_POINT_2D_PTR
+	if(!$arg || !SvOK($arg) || !SvROK($arg) || SvTYPE(SvRV($arg)) != SVt_PVAV || AvFILL((AV*) SvRV($arg)) < 1)
+		croak(\"point_2d should be an array of 2 elements\");
+	Newx($var, 1, dwg_point_2d);
+	$var->x = SvNV(*(av_fetch((AV*) SvRV($arg), 0, 0)));
+	$var->y = SvNV(*(av_fetch((AV*) SvRV($arg), 1, 0)));
+	SAVEFREEPV($var);
+
+T_DWG_POINT_3D_VEC
+	AV *parr;
+	if(!$arg || !SvOK($arg) || !SvROK($arg) || SvTYPE(SvRV($arg)) != SVt_PVAV)
+		croak(\"point_3d array should be an array reference\");
+	parr = (AV*) SvRV($arg);
+	Newx($var, AvFILL(parr) + 1, dwg_point_3d);
+	for(Size_t _ai = 0; _ai <= AvFILL(parr); _ai++) {
+		SV **_ael = av_fetch(parr, _ai, 0);
+		if(!_ael || !*_ael || !SvOK(*_ael) || !SvROK(*_ael) || SvTYPE(SvRV(*_ael)) != SVt_PVAV || AvFILL((AV*) SvRV(*_ael)) < 2)
+			croak(\"point_3d should be an array of 3 elements!\");
+		${var}[_ai].x = SvNV(*(av_fetch((AV*) SvRV(*_ael), 0, 0)));
+		${var}[_ai].y = SvNV(*(av_fetch((AV*) SvRV(*_ael), 1, 0)));
+		${var}[_ai].z = SvNV(*(av_fetch((AV*) SvRV(*_ael), 2, 0)));
+	}
+	SAVEFREEPV($var)
+
+T_DWG_POINT_2D_VEC
+	AV *parr;
+	if(!$arg || !SvOK($arg) || !SvROK($arg) || SvTYPE(SvRV($arg)) != SVt_PVAV)
+		croak(\"point_2d array should be an array reference\");
+	parr = (AV*) SvRV($arg);
+	Newx($var, AvFILL(parr) + 1, dwg_point_2d);
+	for(Size_t _ai = 0; _ai <= AvFILL(parr); _ai++) {
+		SV **_ael = av_fetch(parr, _ai, 0);
+		if(!_ael || !*_ael || !SvOK(*_ael) || !SvROK(*_ael) || SvTYPE(SvRV(*_ael)) != SVt_PVAV || AvFILL((AV*) SvRV(*_ael)) < 1)
+			croak(\"point_2d should be an array of 2 elements!\");
+		${var}[_ai].x = SvNV(*(av_fetch((AV*) SvRV(*_ael), 0, 0)));
+		${var}[_ai].y = SvNV(*(av_fetch((AV*) SvRV(*_ael), 1, 0)));
+	}
+	SAVEFREEPV($var)
+
+OUTPUT
+T_UINT64
+	$var = newSVu64($arg);
+
+T_DWG_POINT_3D_PTR
+	SV *crd[3] = { sv_2mortal(newSVnv($arg->x)), sv_2mortal(newSVnv($arg->y)), sv_2mortal(newSVnv($arg->z)) };
+	$var = av_make(3, &crd);
+
+T_DWG_POINT_2D_PTR
+	SV *crd[2] = { sv_2mortal(newSVnv($arg->x)), sv_2mortal(newSVnv($arg->y)) };
+	$var = av_make(2, &crd);
